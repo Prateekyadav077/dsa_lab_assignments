@@ -103,7 +103,7 @@ int main()
     		case 4: s.full(); break;
     		case 5: s.peek();break;
     		case 6: s.display(); break;
-    		case 7 : cout<<exit<<endl; return 0;
+    		case 7 : cout<<"exit"<<endl; return 0;
     	 default: cout<<"invalid"<<endl;
     	
     	
