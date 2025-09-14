@@ -1,49 +1,89 @@
-#include<iostream>
 using namespace std;
-
+#include<string>
 class Stack{
-public:
-char arr[100];
-int top;
-Stack(){ top=-1; }
-void push(char x){ arr[++top]=x; }
-char pop(){ return arr[top--]; }
-bool empty(){ return top==-1; }
+    
+    int size;
+    char *arr;
+    int top;
+    
+    public:
+    
+    Stack(int size){
+        this->size = size;
+         top =-1;
+        arr = new char[size];
+    }
+    
+    void push(char value){
+        if(top==size-1){
+            cout<<"full";
+            return;
+        }
+        
+        top++;
+        arr[top]=value;
+        
+    }
+    void pop(){
+        if(top==-1){
+            cout<<"\nempty";
+            return;
+            
+        }
+        top--;
+    }
+    char peek(){
+        if(top==-1){
+            cout<<"\nempty";
+            return '\0';
+        }
+        return arr[top];
+    }
+  
 };
-
-bool match(char a,char b){
-return (a=='(' && b==')') || (a=='{' && b=='}') || (a=='[' && b==']');
-}
-
+  bool valid(Stack &s1,char c){
+        if (c=='}'){
+            if(s1.peek()=='{'){
+                s1.pop();
+                return true;}
+              else{return false;}  
+        
+        }
+          else if (c==')'){
+            if(s1.peek()=='('){
+                s1.pop();
+                return true;}
+              else{return false;}  
+        }
+          if (c==']'){
+            if(s1.peek()=='['){
+                s1.pop();
+                return true;}
+              else{return false;}  
+        }
+    }
 int main(){
-int n;
-cout<<"Enter size: ";
-cin>>n;
-Stack st;
-cout<<"Enter brackets: ";
-for(int i=0;i<n;i++){
-char ch;
-cin>>ch;
-st.push(ch);
-}
-
-bool balanced=true;
-
-char b[n];
-
-for(int i=0;i<n;i++) b[i]=st.pop();
-
-for(int i=0;i<n/2;i++){
-if(!match(b[i],b[n-i-1]))
-
-{ balanced=false; 
-
-break; }
-}
-
-if(balanced) cout<<"Balanced\n";
-
-else cout<<"Not Balanced\n";
-
-return 0;
-}
+    Stack s1(20);
+    string c;
+    int p =1;
+    cout<<"\nenter brackets: ";
+    cin>>c;
+    int n = c.size();
+    for(int i =0;i<n;i++){
+        if(c[i]=='('||c[i]=='['||c[i]=='{'){
+            s1.push(c[i]);
+        }
+        else {
+            if(!valid(s1,c[i])){
+        
+        cout<<"\n invalid parenthesis";
+        
+         return -1;
+    }
+               
+            }
+        }
+        
+        cout<<"\nvalid parenthesis";
+    
+    return 0;    }
