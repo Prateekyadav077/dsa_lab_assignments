@@ -75,7 +75,7 @@ int main(){
     st.push(10);
     st.push(20);
     st.push(30);
-    cout<<"Top: "<<st.top()<<endl; // 30
-    st.pop();                       // 30 removed
-    cout<<"Top: "<<st.top()<<endl; // 20
+    cout<<"Top: "<<st.top()<<endl; 
+    st.pop();                       
+    cout<<"Top: "<<st.top()<<endl; 
 }
