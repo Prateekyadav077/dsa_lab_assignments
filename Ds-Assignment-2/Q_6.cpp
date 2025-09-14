@@ -6,21 +6,19 @@ void printMatrix(int row[], int col[], int val[], int n, string name)
     cout << "Matrix " << name << ":" << endl;
     for(int i = 0; i < n; i++)
     {
-        cout << row[i] << " " << col[i] << " "<< val[i]  << endl;
+cout << row[i] << " " << col[i] << " "<< val[i]  << endl;
     }
     cout << endl;
 }
-
 void transpose(int row[], int col[], int val[], int n)
 {
     cout << "Transpose of the matrix:" << endl;
     for(int i = 0; i < n; i++)
     {
-        cout << col[i] << " " << row[i] << " " << val[i] << endl;
+    cout << col[i] << " " << row[i] << " " << val[i] << endl;
     }
     cout << endl;
 }
-
 void add(int row1[], int col1[], int val1[], int n1, int row2[], int col2[], int val2[], int n2)
 {
     cout << "Addition of the two matrices:" << endl;
@@ -42,11 +40,11 @@ void add(int row1[], int col1[], int val1[], int n1, int row2[], int col2[], int
         bool f = false;
         for(int j = 0; j < count; j++)
         {
-            if(row[j] == row2[i] && col[j] == col2[i])
-            {
-                val[j] += val2[i];
-                f = true;
-                break;
+        if(row[j] == row2[i] && col[j] == col2[i])
+        {
+           val[j] += val2[i];
+             f = true;
+             break;
             }
         }
         if(!f)
@@ -60,7 +58,7 @@ void add(int row1[], int col1[], int val1[], int n1, int row2[], int col2[], int
 
     for(int i = 0; i < count; i++)
     {
-        cout <<  row[i] << " " << col[i] << " " << val[i]  << endl;
+     cout <<  row[i] << " " << col[i] << " " << val[i]  << endl;
     }
     cout << endl;
 }
@@ -79,30 +77,28 @@ void multiply(int row1[], int col1[], int val1[], int n1, int row2[], int col2[]
         {
             if(col1[i] == row2[j])
             {
-                int r = row1[i];
-                int c = col2[j];
-                int v = val1[i] * val2[j];
-
-                bool f = false;
-
-                for(int k = 0; k < count; k++)
+    int r = row1[i];
+   int c = col2[j];
+     int v = val1[i] * val2[j];
+         bool f = false;
+       for(int k = 0; k < count; k++)
                 {
-                    if(row[k] == r && col[k] == c)
-                    {
-                        val[k] += v;
-                        f = true;
-                        break;
+           if(row[k] == r && col[k] == c)
+           {
+               val[k] += v;
+                f = true;
+                  break;
                     }
-                }
+             }
 
-                if(!f)
+            if(!f)
                 {
-                    row[count] = r;
-                    col[count] = c;
-                    val[count] = v;
-                    count++;
-                }
-            }
+          row[count] = r;
+          col[count] = c;
+       val[count] = v;
+        count++;
+        }
+        }
         }
     }
 
@@ -127,12 +123,9 @@ int main()
 
     printMatrix(row1, col1, val1, n1, "A");
     printMatrix(row2, col2, val2, n2, "B");
-
-    transpose(row1, col1, val1, n1);
-
-    add(row1, col1, val1, n1, row2, col2, val2, n2);
-
-    multiply(row1, col1, val1, n1, row2, col2, val2, n2);
+ transpose(row1, col1, val1, n1);
+ add(row1, col1, val1, n1, row2, col2, val2, n2);
+  multiply(row1, col1, val1, n1, row2, col2, val2, n2);
 
     return 0;
 }
