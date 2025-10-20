@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    Node* prev;
+
+    Node(int val) {
+        data = val;
+        next = nullptr;
+        prev = nullptr;
+    }
+};
+
+    void insert_at_head(Node* &head,int data) {
+        Node* newNode = new Node(data);
+        if (!head) {
+            head = newNode;
+            return;
+        }
+        newNode->next = head;
+        head->prev = newNode;
+        head = newNode;
+    }
+        int size(Node* &head){
+        if(!head){
+        return 0;}
+        Node* temp = head;
+       int count=0;
+        while(temp!=NULL){
+            temp = temp->next;
+            count ++;
+        }
+        return count;
+    }
+    int main(){
+        Node* n = new Node(60);
+    Node* head = n;
+    Node* tail = n;
+    insert_at_head(head,80);
+    insert_at_head(head,40);
+    insert_at_head(head,100);
+    insert_at_head(head,20);
+    cout<<size(head);
+    return 0;
+    }
+    
